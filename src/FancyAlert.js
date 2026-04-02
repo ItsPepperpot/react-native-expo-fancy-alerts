@@ -44,7 +44,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const FancyAlert = ({ visible, onRequestClose, icon, children, style }) => (
+const FancyAlert = ({
+  visible,
+  onRequestClose = () => {},
+  icon,
+  children,
+  style = {},
+}) => (
   <Modal visible={visible} animationType="fade" transparent onRequestClose={onRequestClose}>
     <View style={styles.container}>
       <View style={[styles.iconCircle, { top: 32, borderColor: style.backgroundColor }]}>
@@ -67,11 +73,6 @@ FancyAlert.propTypes = {
   icon: PropTypes.node.isRequired,
   style: PropTypes.object,
   onRequestClose: PropTypes.func,
-};
-
-FancyAlert.defaultProps = {
-  style: {},
-  onRequestClose: () => {},
 };
 
 export default FancyAlert;
